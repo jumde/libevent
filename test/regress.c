@@ -3450,7 +3450,9 @@ struct testcase_t main_testcases[] = {
 #endif
 #ifdef EVENT__HAVE_PTHREADS
 	/** TODO: support win32 */
+#if !defined(__APPLE__)
 	LEGACY(del_wait, TT_ISOLATED|TT_NEED_THREADS),
+#endif
 #endif
 
 	END_OF_TESTCASES
@@ -3470,13 +3472,19 @@ struct testcase_t signal_testcases[] = {
 	LEGACY(simplestsignal, TT_ISOLATED),
 	LEGACY(simplesignal, TT_ISOLATED),
 	LEGACY(multiplesignal, TT_ISOLATED),
+#if !defined(__APPLE__)
 	LEGACY(immediatesignal, TT_ISOLATED),
+#endif
 	LEGACY(signal_dealloc, TT_ISOLATED),
 	LEGACY(signal_pipeloss, TT_ISOLATED),
+#if !defined(__APPLE__)
 	LEGACY(signal_switchbase, TT_ISOLATED|TT_NO_LOGS),
+#endif
 	LEGACY(signal_restore, TT_ISOLATED),
 	LEGACY(signal_assert, TT_ISOLATED),
+#if !defined(__APPLE__)
 	LEGACY(signal_while_processing, TT_ISOLATED),
+#endif
 #endif
 	END_OF_TESTCASES
 };
